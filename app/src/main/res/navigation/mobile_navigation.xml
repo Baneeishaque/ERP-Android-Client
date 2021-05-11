@@ -22,4 +22,11 @@
         android:name="banee.erp_android_client.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_accounts"
+        android:name="banee.erp_android_client.ui.accounts.AccountsFragment"
+        android:label="Accounts"
+        tools:layout="@layout/fragment_accounts" />
+
 </navigation>
