@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class BranchesActivity extends AppCompatActivity {
 
     Context activityContext = this;
-    public static String selectedBranchName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,9 @@ public class BranchesActivity extends AppCompatActivity {
         BranchsRecyclerViewAdaptor branchsRecyclerViewAdaptor = new BranchsRecyclerViewAdaptor(DashboardActivity.branches);
         branchsRecyclerViewAdaptor.setOnBranchNameClickListener((view, branchName) -> {
 
-            selectedBranchName = branchName;
+            DashboardActivity.selectedBranchName = branchName;
             startActivity(new Intent(activityContext, BranchViewActivity.class));
+            finish();
         });
         recyclerViewBranches.setAdapter(branchsRecyclerViewAdaptor);
     }

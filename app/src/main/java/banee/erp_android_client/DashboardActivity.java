@@ -22,6 +22,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public static ArrayList<String> branches = new ArrayList<>();
+    public static String selectedBranchName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
