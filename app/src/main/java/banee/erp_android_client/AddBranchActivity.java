@@ -24,26 +24,51 @@ public class AddBranchActivity extends AppCompatActivity {
         TextInputEditText textInputEditTextBranchName = findViewById(R.id.textInputEditTextBranchName);
         Button buttonSubmit = findViewById(R.id.buttonSubmit);
 
-        buttonSubmit.setOnClickListener(v -> {
+        if (getIntent().getExtras() == null) {
 
-            String branchName = textInputEditTextBranchName.getText().toString();
-            if (branchName.isEmpty()) {
+            buttonSubmit.setOnClickListener(v -> {
 
-                textInputEditTextBranchName.setError("Please enter branch name..");
-                textInputEditTextBranchName.requestFocus();
+                String branchName = textInputEditTextBranchName.getText().toString();
+                if (branchName.isEmpty()) {
 
-            } else {
+                    textInputEditTextBranchName.setError("Please enter branch name..");
+                    textInputEditTextBranchName.requestFocus();
 
-                DashboardActivity.branches.add(branchName);
-                Toast.makeText(getApplicationContext(), "Branch " + branchName + " added successfully...", Toast.LENGTH_SHORT).show();
-                textInputEditTextBranchName.setText("");
-            }
-        });
+                } else {
+
+                    DashboardActivity.branches.add(branchName);
+                    Toast.makeText(getApplicationContext(), "Branch " + branchName + " added successfully...", Toast.LENGTH_LONG).show();
+                    textInputEditTextBranchName.setText("");
+                }
+            });
+
+        } else {
+
+            buttonSubmit.setText("Update");
+            textInputEditTextBranchName.setText(DashboardActivity.selectedBranchName);
+            buttonSubmit.setOnClickListener(v -> {
+
+                String branchName = textInputEditTextBranchName.getText().toString();
+                if (branchName.isEmpty()) {
+
+                    textInputEditTextBranchName.setError("Please enter branch name..");
+                    textInputEditTextBranchName.requestFocus();
+
+                } else {
+
+                    DashboardActivity.branches.set(DashboardActivity.branches.indexOf(DashboardActivity.selectedBranchName), branchName);
+                    Toast.makeText(getApplicationContext(), "Branch " + branchName + " updated successfully...", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(activityContext, BranchesActivity.class));
+                    finish();
+                }
+            });
+        }
     }
 
     @Override
     public void onBackPressed() {
 
+        //TODO : Workflow for back button click from update page
         super.onBackPressed();
         startActivity(new Intent(activityContext, BranchesActivity.class));
         finish();

@@ -32,7 +32,14 @@ public class BranchViewActivity extends AppCompatActivity {
             finish();
         });
 
+        Button buttonUpdateBranch = findViewById(R.id.buttonUpdateBranch);
+        buttonUpdateBranch.setOnClickListener(v -> {
 
+            Intent updateBranchIntent = new Intent(activityContext, AddBranchActivity.class);
+            updateBranchIntent.putExtra("mode", "update");
+            startActivity(updateBranchIntent);
+            finish();
+        });
     }
 
     @Override
