@@ -16,9 +16,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
+
 public class DashboardActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    public static ArrayList<String> branches = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
