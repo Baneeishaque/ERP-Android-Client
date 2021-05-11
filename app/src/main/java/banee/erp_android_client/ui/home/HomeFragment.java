@@ -39,13 +39,7 @@ public class HomeFragment extends Fragment {
 //        });
 
         final ImageButton imageButtonBranchInfo = root.findViewById(R.id.imageButtonBranchInfo);
-        imageButtonBranchInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(getActivity(), BranchesActivity.class));
-            }
-        });
+        imageButtonBranchInfo.setOnClickListener(v -> startActivity(new Intent(getActivity(), BranchesActivity.class)));
 
         return root;
     }
