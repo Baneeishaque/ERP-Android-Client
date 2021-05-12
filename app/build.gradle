@@ -3,10 +3,23 @@ plugins {
 }
 
 android {
+
+    signingConfigs {
+
+        release {
+
+            keyAlias 'snake'
+            keyPassword '9895204814'
+            storeFile file('../keystore.jks')
+            storePassword '9895204814'
+        }
+    }
+
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+
         applicationId "banee.erp_android_client"
         minSdkVersion 16
         targetSdkVersion 30
@@ -17,7 +30,9 @@ android {
     }
 
     buildTypes {
+        
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -25,6 +40,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+          abortOnError false
     }
 }
 
